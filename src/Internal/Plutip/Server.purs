@@ -395,7 +395,9 @@ startPlutipCluster cfg keysToGenerate = do
     url = mkServerEndpointUrl cfg "start"
     -- TODO epoch size cannot currently be changed due to
     -- https://github.com/mlabs-haskell/plutip/issues/149
-    epochSize = UInt.fromInt 80
+    --
+    -- https://github.com/Plutonomicon/cardano-transaction-lib/issues/1057#issuecomment-1450692539
+    epochSize = UInt.fromInt 432000
   res <- do
     response <- liftAff
       ( Affjax.request
